@@ -3,10 +3,11 @@ import os
 import sys
 import time
 import random
-# import subprocess
 from PyQt5 import QtGui
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+
+# Qt Main Class
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -110,6 +111,7 @@ class Ui_MainWindow(object):
         self.pushButton.clicked.connect(self.generate)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
+    # The Generator Function
     def generate(self):
         first_name = self.lineEdit.text()
         last_name = self.lineEdit_2.text()
@@ -138,18 +140,14 @@ class Ui_MainWindow(object):
 
         data = othersList + infoList + ninfoList
 
-        # self.progressBar.setValue(50)
-
         f = open("passwords.txt", "w")
 
         for i in range(100):
             output = ''.join(random.sample(data, random.randint(1, 3)))
             if len(output) > 6:
                 f.write(output+'\n')
-            # f.write(''.join(random.sample(data, random.randint(1, 3)))+'\n')
             self.progressBar.setValue(i+1)
 
-        # self.progressBar.setValue(100)
         self.lineEdit_7.setText('Information: passwords saved to passwords.txt!')
 
         os.startfile('passwords.txt')
