@@ -157,7 +157,7 @@ class Ui_MainWindow(object):
 
         self.lineEdit_7.setText('Information: passwords saved to passwords.txt!')
 
-        open_file("passwords.txt", "w")
+        open_file("passwords.txt")
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
