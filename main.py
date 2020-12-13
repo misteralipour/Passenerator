@@ -3,9 +3,16 @@ import os
 import sys
 import time
 import random
+import subprocess
 from PyQt5 import QtGui
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+def open_file(filename):
+    if sys.platform == "win32":
+        os.startfile(filename)
+    else:
+        opener = "open" if sys.platform == "darwin" else "xdg-open"
+        subprocess.call([opener, filename])
 
 # Qt Main Class
 class Ui_MainWindow(object):
@@ -140,7 +147,7 @@ class Ui_MainWindow(object):
 
         data = othersList + infoList + ninfoList
 
-        f = open("passwords.txt", "w")
+        open_file("passwords.txt", "w")
 
         for i in range(100):
             output = ''.join(random.sample(data, random.randint(1, 3)))
