@@ -147,7 +147,7 @@ class Ui_MainWindow(object):
 
         data = othersList + infoList + ninfoList
 
-        open_file("passwords.txt", "w")
+        f = open("passwords.txt", "w")
 
         for i in range(100):
             output = ''.join(random.sample(data, random.randint(1, 3)))
@@ -157,7 +157,7 @@ class Ui_MainWindow(object):
 
         self.lineEdit_7.setText('Information: passwords saved to passwords.txt!')
 
-        os.startfile('passwords.txt')
+        open_file("passwords.txt", "w")
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
